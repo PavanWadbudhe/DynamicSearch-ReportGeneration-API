@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-8 offset-2">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Insurance Report</h3>
+            </div>
+            <div class="card-bogy">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-3">
+                            <select class="form-select" name="planName" [(ngModel)]="selectedPlan">
+                                <option selected Value="select" disabled>Select a Plan Name</option>
+                                <option Value="">All Plans</option>
+                                <option value="{{planName}}" *ngFor="let planName of planNames">{{planName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <select class="form-select" name="planStatus" [(ngModel)]="selectedStatus">
+                                <option selected Value="select" disabled>Select a Plan Status</option>
+                                <option Value="">All Status</option>
+                                <option value="{{planStatus}}" *ngFor="let planStatus of planStatuses">{{planStatus}}</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search" aria-hidden="true">Search</i></button>
+                        </div>
+                    </div>
+                </form>
+                <div>
+                    <div class="row">
+                        <div class="col-10 offset-1">
+                            <table class="table" *ngIf="searchResponse.length > 0">
+                                <thead>
+                                    <tr>
+                                        <th>Plan Id</th>
+                                        <th>Plan Name</th>
+                                        <th>Holder Name</th>
+                                        <th>Holder SSN</th>
+                                        <th>Plan Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let response of searchResponse">
+                                        <td>{{response.planId}}</td>
+                                        <td>{{response.planName}}</td>
+                                        <td>{{response.holderName}}</td>
+                                        <td>{{response.holderSsn}}</td>
+                                        <td>{{response.planStatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-4 offset-8">
+                        <div class="row">
+                            <div class="col-5 offset-2">
+                                <button class="btn btn-success" (click)="exportToExcel()">Export <i class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="col-5">
+                                <button class="btn btn-danger" (click)="exportToPdf()">Export <i class="fa fa-file-pdf-o" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

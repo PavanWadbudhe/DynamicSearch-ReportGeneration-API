@@ -1,0 +1,19 @@
+server:
+  port: 4041
+  servlet:
+    context-path: /DynamicSearchApp-InExleAndPdf
+spring:
+  application:
+    name: BootRestProj03-DynamicSearch-InExleAndPdf
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: MANAGER
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: system
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+#App custom message  
